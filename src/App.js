@@ -8,7 +8,7 @@ import {
 import "./App.css";
 
 import Notifications from "react-notify-toast";
-import "react-toastify/dist/ReactToastify.css";
+
 
 import { Confirm, Landing } from "./pages";
 import { Loader } from "./components";
