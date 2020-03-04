@@ -1,3 +1,9 @@
+This project is inspired by Jesse Heaslip's [Email Confirmation with React](https://blog.bitsrc.io/email-confirmation-with-react-257e5d9de725) tutorial.
+
+The original repo is [here](https://github.com/funador/react-confirm-email)
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
