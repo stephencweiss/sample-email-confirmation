@@ -1,0 +1,15 @@
+{
+  "name": "sample-email-confirmation",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:stephencweiss/sample-email-confirmation.git",
+  "author": "Stephen <stephencweiss@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
