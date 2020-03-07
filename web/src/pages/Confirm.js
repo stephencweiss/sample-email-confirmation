@@ -1,5 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { Loader } from "../components";
+import { API_URL } from "../config";
 
-export function Confirm (props) {
-  return (<div>You're on the Confirm page - if you see this it should be because you signed up! We'll be adding some logic shortly to verify that</div>)
+// todo - make this into a state machine
+
+export function Confirm(props) {
+  const [isConfirming, setIsConfirming] = useState(true);
+
+  useEffect(() => {
+    const { id } = props.match.params;
+    try {
+      fetch(`${API_URL}/email/confirm/${id}`)
+        .then(res => res.json())
+        .then(() => setIsConfirming(false))
+        .catch(error => {
+          throw new Error(`error`, error);
+        });
+    } catch (error) {
+      console.error(`Something's wrong`, error);
+    }
+  }, [props.match.params.id]);
+
+  const content = isConfirming ? (
+    <Loader />
+  ) : (
+    <div>
+      <p>You're confirmed! Welcome to the party!</p>
+      <a href="/">Return Home</a>
+    </div>
+  );
+
+  return content;
 }
