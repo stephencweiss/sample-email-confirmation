@@ -17,12 +17,12 @@ app.get("/wake-up", (req, res) => res.json("I'm awake! Sheesh! ☕️"));
 
 app.post("/email", (req, res) => {
   res.status(200);
-  res.json({ msg: "Need to implement a controller" });
+  res.json({ message: "Need to implement a controller" });
   res.send(); // is this not needed?
 });
 
 app.use("*", (req, res) => {
-  res.status(404).json({ msg: "Not found" });
+  res.status(404).json({ message: "Not found" });
 });
 
 const options = {
