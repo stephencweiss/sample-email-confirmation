@@ -6,8 +6,9 @@
   "author": "Stephen <stephencweiss@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node server/index.js",
-    "dev": "nodemon server/index.js"
+    "server:start": "node server/index.js",
+    "dev:server": "nodemon server/index.js",
+    "web:start": "cd web && npm start",
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
