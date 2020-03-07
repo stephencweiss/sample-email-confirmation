@@ -2,9 +2,19 @@ const dotenv = require("dotenv");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const { collectEmail, confirmEmail } = require("./email/controllers");
 const { PORT, CLIENT_ORIGIN, DB_URL } = require("./config");
-
 dotenv.config();
+
+const awaitHandlerFactory = (middleware) => {
+  return async (req, res, next) => {
+    try {
+      await middleware(req, res, next)
+    } catch (err) {
+      next(err)
+    }
+  }
+}
 
 const app = express();
 // add an email controller
@@ -15,11 +25,9 @@ app.use(express.json());
 
 app.get("/wake-up", (req, res) => res.json("I'm awake! Sheesh! ☕️"));
 
-app.post("/email", (req, res) => {
-  res.status(200);
-  res.json({ message: "Need to implement a controller" });
-  res.send(); // is this not needed?
-});
+app.post("/email", awaitHandlerFactory(collectEmail));
+
+app.get("/email/confirm/:id", awaitHandlerFactory(confirmEmail));
 
 app.use("*", (req, res) => {
   res.status(404).json({ message: "Not found" });
