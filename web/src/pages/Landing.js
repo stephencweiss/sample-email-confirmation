@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
 import { notify } from "react-notify-toast";
-import { API_URL } from "../config";
+// import { API_URL } from "../config";
 import { Loader } from "../components";
+import { constants } from "../constants";
 
 export function Landing(props) {
   const [sendingEmail, setSendingEmail] = useState(false);
@@ -12,19 +13,15 @@ export function Landing(props) {
     event.preventDefault();
     setSendingEmail(true);
     try {
-      // send a POST to /email
+      // TODO - send a POST to /email
       // await response - if it's valid, we're good
-      // toast a success
-      notify.show('success!', 'success')
+      notify.show(constants.SUCCESS_EMAIL_SUBMISSION, "success");
     } catch (error) {
-      // if the server sends an error
-      // toast an error
-      notify.show('oh no!!', 'error')
+      notify.show(constants.ERROR_GENERIC, "error");
     } finally {
       // finally reset form for another submission
-      setTimeout(() =>
-      {formRef.current.reset()
-      setSendingEmail(false)}, 2000);
+      formRef.current.reset();
+      setSendingEmail(false);
     }
   };
 
