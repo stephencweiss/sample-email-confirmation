@@ -3,6 +3,7 @@ const { sendEmail } = require("./config");
 const { messages } = require("./templates/messages");
 const { confirmation } = require("./templates/confirmation");
 
+console.log(JSON.stringify({ sendEmail }, null, 4));
 /**
  * States of a user (-> action to take):
  * Created -> send
@@ -16,6 +17,7 @@ const { confirmation } = require("./templates/confirmation");
  */
 function collectEmail(req, res) {
   const { email } = req.body;
+  if (!email) return res.status(400).send(); // handle malformed api request
   User.findOne({ email })
     .then(user => {
       // this is a new user! send a confirmation email;
@@ -91,4 +93,4 @@ function confirmEmail(req, res) {
   });
 }
 
-module.exports = {collectEmail, confirmEmail}
+module.exports = { collectEmail, confirmEmail };
