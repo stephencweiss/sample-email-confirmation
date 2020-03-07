@@ -45,7 +45,7 @@ export function Landing() {
             type="email"
             placeholder="john@example.com"
             ref={emailRef}
-            pattern='^[^@]+@[^@]+\.[^@\.]+\.?[^@\.]*$'
+            pattern='^[^@]+@[^@]+\.[^@\.]+\.?[^@\.]*$' // source: https://davidwalsh.name/regular-expressions-rest#comment-506734
             title="Please submit a valid email"
             required
           />
